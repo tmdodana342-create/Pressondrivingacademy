@@ -1,0 +1,6 @@
+{
+  "name": "PO Driving Academy",
+  "description": "PO Driving Academy provides professional driving tuition, K53 test preparation, and defensive driving lessons across Cape Town's Southern Suburbs and Southern Peninsula.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
