@@ -1,5 +1,6 @@
 import React from 'react';
 import { CheckCircle2, ShieldCheck, Award, HeartHandshake } from 'lucide-react';
+import aboutImage from '../assets/images/pic30.png';
 
 interface AboutSectionProps {
   onRatesClick?: () => void;
@@ -15,17 +16,21 @@ export const AboutSection: React.FC<AboutSectionProps> = () => {
           
           {/* Left Column: Visual with Pass Rate Badge */}
           <div className="lg:col-span-5 relative">
-            <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white">
+            <div className="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-slate-100">
               <img
-                src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=900&auto=format&fit=crop"
-                alt="PO Driving Academy Instructor Vehicle"
-                className="w-full h-80 sm:h-96 object-cover"
+                src={aboutImage}
+                onError={(e) => {
+                  e.currentTarget.src = '/pic30.png';
+                }}
+                alt="Press On Driving Academy Training"
+                className="w-full aspect-4/5 sm:aspect-4/5 lg:h-[500px] object-cover object-top"
+                style={{ objectPosition: 'center top' }}
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/10 to-transparent pointer-events-none" />
               
               {/* Overlay Text */}
-              <div className="absolute bottom-4 left-4 right-4 text-white">
+              <div className="absolute bottom-4 left-4 right-4 text-white pointer-events-none">
                 <span className="text-xs font-bold uppercase tracking-wider text-emerald-300">
                   Qualified Driving Academy
                 </span>

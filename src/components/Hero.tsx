@@ -14,6 +14,7 @@ interface SlideItem {
   titleLine2: string;
   description: string;
   image: string;
+  fallback?: string;
   imageAlt: string;
 }
 
@@ -25,9 +26,9 @@ const HERO_SLIDES: SlideItem[] = [
     titleLine2: 'Yourself An Expert Driver',
     description:
       'Professional driving tuition in Cape Town with certified, patient instructors. Code 8 light vehicle lessons, K53 yard & road test preparation, and advanced skill development.',
-    image:
-      'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=1920&auto=format&fit=crop',
-    imageAlt: 'Confident driver behind the steering wheel in training car',
+    image: '/polo.png',
+    fallback: '/POLO.png',
+    imageAlt: 'Press On Driving Academy VW Polo official training car',
   },
   {
     id: 'slide-2',
@@ -36,9 +37,9 @@ const HERO_SLIDES: SlideItem[] = [
     titleLine2: 'Quality Lessons In Cape Town',
     description:
       'Overcome driving anxiety with stress-free, step-by-step guidance. Tailored for complete beginners, nervous learners, and licensed drivers seeking advance skills.',
-    image:
-      'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=1920&auto=format&fit=crop',
-    imageAlt: 'Driving tuition on scenic Cape Town road',
+    image: '/cape.png',
+    fallback: '/cape_driving_academy.jpg',
+    imageAlt: 'Press On Driving Academy branded training car at Cape Town Table Mountain',
   },
   {
     id: 'slide-3',
@@ -47,9 +48,9 @@ const HERO_SLIDES: SlideItem[] = [
     titleLine2: 'Pass Your Test With Total Confidence',
     description:
       'Master parallel parking, alley docking, 3-point turns, and incline starts with simple reference points, mock test assessments, and test day car hire.',
-    image:
-      'https://images.unsplash.com/photo-1508974239320-0a029497e820?q=80&w=1920&auto=format&fit=crop',
-    imageAlt: 'Right hand vehicle steering and driving test mastery',
+    image: '/polo2.png',
+    fallback: '/polo.png',
+    imageAlt: 'Press On Driving Academy dual-control Polo training vehicle',
   },
 ];
 
@@ -98,6 +99,11 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onPricingClick }) => {
             <img
               src={slide.image}
               alt={slide.imageAlt}
+              onError={(e) => {
+                if (slide.fallback && e.currentTarget.src !== window.location.origin + slide.fallback) {
+                  e.currentTarget.src = slide.fallback;
+                }
+              }}
               className="w-full h-full object-cover object-center filter brightness-[0.88]"
               referrerPolicy="no-referrer"
             />

@@ -12,6 +12,9 @@ export interface RatePackage {
   features: string[];
 }
 
+export const GOOGLE_REVIEWS_URL =
+  'https://www.google.com/search?q=press+on+driving+academy-+driving+school+cape+town&tbnid=HPjaYvw1bStWhM&tbnh=0&tbnw=0&rlz=1C1JJTC_enZA1187ZA1187&cs=1&biw=1682&bih=872&sca_esv=0445900a5023e21a&sxsrf=APpeQnvc0qMyR011vjqhvQjp5-ObG1K2SQ%3A1789152564701&ei=NE2katSuKtOzhbIP5rO9yAE&ved=2ahUKEwjUmMXYmOeWAxXTWUEAHeZZDxkQ4dUDegQIBhAM&uact=5&oq=press+on+driving+academy-+driving+school+cape+town&gs_lp=Egxnd3Mtd2l6LXNlcnAiMnByZXNzIG9uIGRyaXZpbmcgYWNhZGVteS0gZHJpdmluZyBzY2hvb2wgY2FwZSB0b3duMgUQIRigATIFECEYoAFIu5kBUOgFWKWWAXAGeAGQAQCYAdUCoAGoTKoBBzItMTkuMTS4AQPIAQD4AQGYAiagArBLwgIKEAAYRxjWBBiwA8ICBBAjGCfCAgYQABgWGB7CAgsQABiABBiKBRiGA8ICBRAAGO8FwgIIEAAYgAQYogTCAgUQIRifBcICBxAhGAoYoAHCAgQQIRgKwgIEECEYFZgDAIgGAZAGApIHCTYuMC4xNy4xNaAH9K0BsgcHMi0xNy4xNbgHnEvCBwYwLjMxLjfIB1-ACAE&sclient=gws-wiz-serp#lrd=0x1dcc497e77464ed3:0xb18973459080f066,1,,,,';
+
 export const BRAND_INFO = {
   name: "Press On Driving Academy",
   shortName: "PO Driving Academy",
@@ -26,6 +29,7 @@ export const BRAND_INFO = {
   address: "Southern Suburbs & Southern Peninsula, Cape Town",
   facebookUrl: "https://www.facebook.com/search/top?q=PO%20Driving%20Academy",
   instagramUrl: "https://www.instagram.com/po_dacademy",
+  googleReviewsUrl: GOOGLE_REVIEWS_URL,
   whatsappDefaultMsg: "Hi Press On Driving Academy, I would like to enquire about booking driving lessons."
 };
 
@@ -280,53 +284,166 @@ export const SUBURB_AREAS = [
 export const STUDENT_PHOTOS = [
   {
     id: "sp-1",
-    url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop",
-    alt: "Student driver"
+    url: "/pic1.png",
+    alt: "Press On Driving Academy student proudly celebrating passing her driving test"
   },
   {
     id: "sp-2",
-    url: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=800&auto=format&fit=crop",
-    alt: "Student driver"
+    url: "/pic--2.png",
+    alt: "Press On Driving Academy student holding driver's license certificate"
   },
   {
     id: "sp-3",
-    url: "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop",
-    alt: "Student driver"
+    url: "/pic3.png",
+    alt: "Press On Driving Academy student proudly displaying official test pass certificate"
   },
   {
     id: "sp-4",
-    url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop",
-    alt: "Student driver"
+    url: "/pic4.png",
+    alt: "Press On Driving Academy student holding test pass sheet with academy car"
   },
   {
     id: "sp-5",
-    url: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop",
-    alt: "Student driver"
+    url: "/pic5.png",
+    alt: "Press On Driving Academy student celebrating first-time driving test pass"
   },
   {
     id: "sp-6",
-    url: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop",
-    alt: "Student driver"
+    url: "/pic-6.png",
+    alt: "Press On Driving Academy student holding official driver's pass certificate"
   },
   {
     id: "sp-7",
-    url: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800&auto=format&fit=crop",
-    alt: "Student driver"
+    url: "/pic7.png",
+    alt: "Press On Driving Academy student smiling with pass certificate in front of car"
   },
   {
     id: "sp-8",
-    url: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=800&auto=format&fit=crop",
-    alt: "Student driver"
+    url: "/pic8.png",
+    alt: "Press On Driving Academy student successful test pass celebration"
   },
   {
     id: "sp-9",
-    url: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop",
-    alt: "Student driver"
+    url: "/pic-9.png",
+    alt: "Press On Driving Academy student holding driver's license test pass paper"
   },
   {
     id: "sp-10",
-    url: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop",
-    alt: "Student driver"
+    url: "/pic10.png",
+    alt: "Press On Driving Academy successful driver holding pass certificate"
+  },
+  {
+    id: "sp-11",
+    url: "/pic11.png",
+    alt: "Press On Driving Academy student celebrating driving test victory"
+  },
+  {
+    id: "sp-12",
+    url: "/pic12.png",
+    alt: "Press On Driving Academy student with newly issued driving license certificate"
+  },
+  {
+    id: "sp-13",
+    url: "/pic13.png",
+    alt: "Press On Driving Academy student showing test pass sheet by academy vehicle"
+  },
+  {
+    id: "sp-14",
+    url: "/pic14.png",
+    alt: "Press On Driving Academy student pass story celebration"
+  },
+  {
+    id: "sp-15",
+    url: "/pic15.png",
+    alt: "Press On Driving Academy student celebrating driver's test success"
+  },
+  {
+    id: "sp-16",
+    url: "/pic16.png",
+    alt: "Press On Driving Academy student holding driver's license test pass certificate"
+  },
+  {
+    id: "sp-17",
+    url: "/pic17.png",
+    alt: "Press On Driving Academy student with pass certificate and academy vehicle"
+  },
+  {
+    id: "sp-18",
+    url: "/pic18.png",
+    alt: "Press On Driving Academy student proud test pass celebration"
+  },
+  {
+    id: "sp-19",
+    url: "/pic19.png",
+    alt: "Press On Driving Academy student celebrating first-time pass"
+  },
+  {
+    id: "sp-20",
+    url: "/pic20.png",
+    alt: "Press On Driving Academy student holding official driver's license certificate"
+  }
+];
+
+export const GOOGLE_REVIEWS = [
+  {
+    id: "gr-1",
+    author: "Lwando Mtembu",
+    rating: 5,
+    relativeTime: "1 month ago",
+    text: "Passed my Code 8 practical driver's test on my very first attempt! The instructor at Press On Driving Academy was extraordinarily patient, calm, and gave crystal-clear reference points for alley docking and parallel parking. The VW Polo was super smooth and easy to handle. Highly recommended to anyone looking for quality driving lessons in Cape Town!",
+    suburb: "Claremont, Cape Town",
+    testPassed: "Code 8 First Time Pass",
+    avatarColor: "bg-emerald-600"
+  },
+  {
+    id: "gr-2",
+    author: "Chloe van der Merwe",
+    rating: 5,
+    relativeTime: "2 months ago",
+    text: "I had extreme driving anxiety from a past experience with another instructor. Press On Driving Academy completely changed my confidence! They made every lesson relaxing, safe, and stress-free. Passed my test at Gallows Hill with zero faults on yard manoeuvres.",
+    suburb: "Rondebosch, Cape Town",
+    testPassed: "Code 8 Manual Pass",
+    avatarColor: "bg-blue-600"
+  },
+  {
+    id: "gr-3",
+    author: "Thabo Ndlovu",
+    rating: 5,
+    relativeTime: "3 months ago",
+    text: "Best driving school in Cape Town's Southern Suburbs hands down. Reliable door-to-door pick-up, very clean VW Polo dual-control car, and thorough test day preparation. The warm-up hour before going into the traffic department settled all my nerves.",
+    suburb: "Fish Hoek, Cape Town",
+    testPassed: "Code 8 Test Passed",
+    avatarColor: "bg-purple-600"
+  },
+  {
+    id: "gr-4",
+    author: "Jessica Klein",
+    rating: 5,
+    relativeTime: "4 months ago",
+    text: "Extremely professional academy. The instructor teaches you the exact K53 scoring criteria so nothing comes as a surprise during the exam. Passed both the yard and road test with total ease. 10/10 service and super friendly!",
+    suburb: "Wynberg, Cape Town",
+    testPassed: "K53 Yard & Road Pass",
+    avatarColor: "bg-amber-600"
+  },
+  {
+    id: "gr-5",
+    author: "Sipho Dlamini",
+    rating: 5,
+    relativeTime: "5 months ago",
+    text: "5 stars is not even enough! After struggling with another driving school, I booked the 10 lessons package with Press On. The guidance on clutch control, hill starts, and mirror checks made all the difference. Passed on my next attempt!",
+    suburb: "Muizenberg, Cape Town",
+    testPassed: "Code 8 Test Success",
+    avatarColor: "bg-red-600"
+  },
+  {
+    id: "gr-6",
+    author: "Megan Brown",
+    rating: 5,
+    relativeTime: "6 months ago",
+    text: "Patient, encouraging, and professional from lesson one. They do not just teach you to pass the test; they teach you how to be a safe, defensive driver on busy Cape Town roads. Would recommend them to all learners!",
+    suburb: "Constantia, Cape Town",
+    testPassed: "Advance & Code 8 Tuition",
+    avatarColor: "bg-teal-600"
   }
 ];
 

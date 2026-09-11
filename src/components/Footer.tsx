@@ -26,10 +26,12 @@ export const Footer: React.FC = () => {
           {/* Col 1: Brand Info */}
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1B7A3E] to-[#D32F2F] p-0.5">
-                <div className="w-full h-full bg-slate-900 rounded-[10px] flex items-center justify-center text-white">
-                  <Car className="w-5 h-5 text-emerald-400" />
-                </div>
+              <div className="bg-white/95 rounded-xl p-1.5 shadow-sm shrink-0 flex items-center justify-center">
+                <img
+                  src="/logo.png"
+                  alt="Press On Driving Academy Logo"
+                  className="h-9 sm:h-10 w-auto object-contain"
+                />
               </div>
               <div className="flex flex-col">
                 <span className="font-extrabold text-lg text-white leading-tight">
@@ -45,7 +47,7 @@ export const Footer: React.FC = () => {
               Professional driving tuition in Southern Suburbs & Southern Peninsula. Committed to patient, structured, and calm driver education with free door-to-door collection.
             </p>
 
-            {/* Social Icons */}
+            {/* Social Icons & Google Reviews */}
             <div className="flex items-center gap-3 pt-1">
               <a
                 href={BRAND_INFO.facebookUrl}
@@ -65,6 +67,17 @@ export const Footer: React.FC = () => {
               >
                 <Instagram className="w-4 h-4" />
               </a>
+              <a
+                href={BRAND_INFO.googleReviewsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Press On Driving Academy Google Reviews"
+                title="5.0 Star Google Reviews"
+                className="h-9 px-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-amber-400 flex items-center gap-1.5 transition-colors border border-slate-800 text-xs font-semibold"
+              >
+                <span className="text-amber-400 font-bold">★ 5.0</span>
+                <span className="text-[11px] text-slate-400">Google Reviews</span>
+              </a>
             </div>
           </div>
 
@@ -81,6 +94,16 @@ export const Footer: React.FC = () => {
                   </a>
                 </li>
               ))}
+              <li>
+                <a
+                  href={BRAND_INFO.googleReviewsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-amber-400 text-amber-500/90 font-medium transition-colors inline-flex items-center gap-1"
+                >
+                  <span>Google Reviews (5.0 ★)</span>
+                </a>
+              </li>
             </ul>
           </div>
 

@@ -42,3 +42,14 @@ export interface TestimonialItem {
   rating: number;
   result: string;
 }
+
+export interface GoogleReviewItem {
+  id: string;
+  author: string;
+  rating: number;
+  relativeTime: string;
+  text: string;
+  suburb?: string;
+  testPassed?: string;
+  avatarColor?: string;
+}
