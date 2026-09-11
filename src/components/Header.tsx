@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Phone, Mail, Clock, MessageCircle, Menu, X, Car, Calendar, ChevronDown, Star, ExternalLink, Award, MessageSquare } from 'lucide-react';
+import { Phone, Mail, Clock, MessageCircle, Menu, X, Car, Calendar, ChevronDown, Star, ExternalLink, Award, MessageSquare, Facebook, Instagram } from 'lucide-react';
 import { BRAND_INFO, GMAIL_COMPOSE_URL, GOOGLE_REVIEWS_URL } from '../data/content';
 
 interface HeaderProps {
@@ -105,6 +105,30 @@ export const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
             <span className="hidden md:inline text-[11px] text-emerald-300 font-semibold uppercase tracking-wider">
               {BRAND_INFO.tagline}
             </span>
+
+            {/* Social Links */}
+            <div className="hidden sm:flex items-center gap-1.5 border-l border-emerald-900/80 pl-2.5">
+              <a
+                href={BRAND_INFO.facebookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="PO Driving Academy on Facebook"
+                title="PO Driving Academy on Facebook"
+                className="w-6 h-6 rounded bg-emerald-950/70 hover:bg-[#1877F2] text-slate-300 hover:text-white flex items-center justify-center transition-colors"
+              >
+                <Facebook className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href={BRAND_INFO.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="PO Driving Academy on Instagram"
+                title="PO Driving Academy on Instagram (@po_dacademy)"
+                className="w-6 h-6 rounded bg-emerald-950/70 hover:bg-[#E4405F] text-slate-300 hover:text-white flex items-center justify-center transition-colors"
+              >
+                <Instagram className="w-3.5 h-3.5" />
+              </a>
+            </div>
 
             <a
               href={whatsappUrl}
@@ -415,6 +439,28 @@ export const Header: React.FC<HeaderProps> = ({ onBookClick }) => {
             >
               <Mail className="w-4 h-4 text-emerald-400" />
               <span>Email Us</span>
+            </a>
+          </div>
+
+          {/* Social Links on Mobile */}
+          <div className="pt-2 flex items-center justify-center gap-2">
+            <a
+              href={BRAND_INFO.facebookUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 px-3 py-2 rounded-lg bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-[#1877F2] flex items-center justify-center gap-1.5 text-xs font-semibold transition-colors border border-slate-200"
+            >
+              <Facebook className="w-3.5 h-3.5 text-[#1877F2]" />
+              <span>Facebook Page</span>
+            </a>
+            <a
+              href={BRAND_INFO.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 px-3 py-2 rounded-lg bg-slate-100 hover:bg-pink-50 text-slate-700 hover:text-[#E4405F] flex items-center justify-center gap-1.5 text-xs font-semibold transition-colors border border-slate-200"
+            >
+              <Instagram className="w-3.5 h-3.5 text-[#E4405F]" />
+              <span>Instagram</span>
             </a>
           </div>
         </div>

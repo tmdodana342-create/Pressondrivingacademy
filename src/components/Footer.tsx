@@ -53,8 +53,9 @@ export const Footer: React.FC = () => {
                 href={BRAND_INFO.facebookUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Press On Driving Academy on Facebook"
-                className="w-9 h-9 rounded-lg bg-slate-900 hover:bg-[#1B7A3E] text-slate-300 hover:text-white flex items-center justify-center transition-colors border border-slate-800"
+                aria-label="PO Driving Academy on Facebook"
+                title="PO Driving Academy on Facebook"
+                className="w-9 h-9 rounded-lg bg-slate-900 hover:bg-[#1877F2] text-slate-300 hover:text-white flex items-center justify-center transition-colors border border-slate-800"
               >
                 <Facebook className="w-4 h-4" />
               </a>
@@ -62,8 +63,9 @@ export const Footer: React.FC = () => {
                 href={BRAND_INFO.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Press On Driving Academy on Instagram"
-                className="w-9 h-9 rounded-lg bg-slate-900 hover:bg-[#D32F2F] text-slate-300 hover:text-white flex items-center justify-center transition-colors border border-slate-800"
+                aria-label="PO Driving Academy on Instagram"
+                title="PO Driving Academy on Instagram (@po_dacademy)"
+                className="w-9 h-9 rounded-lg bg-slate-900 hover:bg-[#E4405F] text-slate-300 hover:text-white flex items-center justify-center transition-colors border border-slate-800"
               >
                 <Instagram className="w-4 h-4" />
               </a>

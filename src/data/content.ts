@@ -27,8 +27,8 @@ export const BRAND_INFO = {
   hoursWeekdays: "Mon - Fri: 07:00 AM - 06:00 PM",
   hoursWeekend: "Sat: 08:00 AM - 04:00 PM",
   address: "Southern Suburbs & Southern Peninsula, Cape Town",
-  facebookUrl: "https://www.facebook.com/search/top?q=PO%20Driving%20Academy",
-  instagramUrl: "https://www.instagram.com/po_dacademy",
+  facebookUrl: "https://www.facebook.com/p/PO-Driving-Academy-100083055802580/",
+  instagramUrl: "https://www.instagram.com/po_dacademy/",
   googleReviewsUrl: GOOGLE_REVIEWS_URL,
   whatsappDefaultMsg: "Hi Press On Driving Academy, I would like to enquire about booking driving lessons."
 };
