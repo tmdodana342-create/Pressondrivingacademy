@@ -1,6 +1,6 @@
 import React from 'react';
 import { CheckCircle2, ShieldCheck, Award, HeartHandshake } from 'lucide-react';
-import aboutImage from '../assets/images/pic30.png';
+import aboutImage from '../assets/images/presss.png';
 
 interface AboutSectionProps {
   onRatesClick?: () => void;
@@ -20,10 +20,10 @@ export const AboutSection: React.FC<AboutSectionProps> = () => {
               <img
                 src={aboutImage}
                 onError={(e) => {
-                  e.currentTarget.src = '/pic30.png';
+                  e.currentTarget.src = '/presss.png';
                 }}
                 alt="Press On Driving Academy Training"
-                className="w-full aspect-4/5 sm:aspect-4/5 lg:h-[500px] object-cover object-top"
+                className="w-full aspect-4/3 sm:aspect-4/3 lg:h-[460px] object-cover object-top"
                 style={{ objectPosition: 'center top' }}
                 referrerPolicy="no-referrer"
               />

@@ -8,7 +8,9 @@ import {
   MessageSquare,
   CheckCircle2,
   Quote,
-  Edit3
+  Edit3,
+  X,
+  Maximize2
 } from 'lucide-react';
 import { STUDENT_PHOTOS, GOOGLE_REVIEWS, GOOGLE_REVIEWS_URL } from '../data/content';
 
@@ -38,6 +40,7 @@ export const TestimonialsSection: React.FC = () => {
 
   // Show 4 photos at a time from the student photos
   const [startIndex, setStartIndex] = useState(0);
+  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);
   const total = STUDENT_PHOTOS.length;
   const visibleCount = 4;
   const pageCount = Math.ceil(total / visibleCount);
@@ -50,6 +53,18 @@ export const TestimonialsSection: React.FC = () => {
   const handlePrev = () => {
     setStartIndex((prev) => (prev - visibleCount < 0 ? (pageCount - 1) * visibleCount : prev - visibleCount));
   };
+
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (selectedPhotoIndex === null) return;
+      if (e.key === 'Escape') setSelectedPhotoIndex(null);
+      if (e.key === 'ArrowRight') setSelectedPhotoIndex((prev) => (prev !== null && prev < total - 1 ? prev + 1 : 0));
+      if (e.key === 'ArrowLeft') setSelectedPhotoIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : total - 1));
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedPhotoIndex, total]);
 
   // Listen to custom switch-testimonials-tab event from Header dropdown
   useEffect(() => {
@@ -195,26 +210,42 @@ export const TestimonialsSection: React.FC = () => {
           <div>
             <div className="relative">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-                {visiblePhotos.map((student) => (
-                  <div
-                    key={student.id}
-                    className="group relative aspect-4/5 sm:aspect-3/4 rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-xs hover:shadow-md transition-all duration-300"
-                  >
-                    <img
-                      src={student.url}
-                      alt={student.alt}
-                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                      referrerPolicy="no-referrer"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
-                      <span className="text-[11px] font-bold text-white flex items-center gap-1">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                        <span>Licensed Driver</span>
-                      </span>
+                {visiblePhotos.map((student, idx) => {
+                  const globalIndex = startIndex + idx;
+                  return (
+                    <div
+                      key={student.id}
+                      onClick={() => setSelectedPhotoIndex(globalIndex)}
+                      className="group relative aspect-square rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-xs hover:shadow-md transition-all duration-300 cursor-pointer"
+                      title="Click to view full photo"
+                    >
+                      <img
+                        src={student.url}
+                        alt={student.alt}
+                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                        style={{ objectPosition: 'center top' }}
+                        referrerPolicy="no-referrer"
+                        loading="lazy"
+                        onError={(e) => {
+                          // Ensure image reload attempt if cache is warm
+                          const target = e.currentTarget;
+                          if (!target.src.includes('?r=')) {
+                            target.src = `${student.url}?r=1`;
+                          }
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between p-3 pointer-events-none">
+                        <span className="text-[11px] font-bold text-white flex items-center gap-1">
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                          <span>Licensed Driver</span>
+                        </span>
+                        <span className="w-6 h-6 rounded-full bg-white/20 backdrop-blur-xs flex items-center justify-center text-white">
+                          <Maximize2 className="w-3 h-3" />
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
 
               {/* Floating Right Arrow Button on the right edge for desktop */}
@@ -240,6 +271,77 @@ export const TestimonialsSection: React.FC = () => {
                 />
               ))}
             </div>
+
+            {/* Lightbox Modal for Full View */}
+            {selectedPhotoIndex !== null && (
+              <div
+                className="fixed inset-0 z-50 bg-black/80 backdrop-blur-xs flex items-center justify-center p-4"
+                onClick={() => setSelectedPhotoIndex(null)}
+              >
+                <div
+                  className="relative max-w-lg w-full bg-white rounded-2xl overflow-hidden shadow-2xl p-2 sm:p-3 animate-in fade-in zoom-in-95 duration-200"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {/* Top Bar with Close Button */}
+                  <div className="flex items-center justify-between px-3 py-2 border-b border-slate-100">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                      <span className="text-xs font-bold text-slate-900">
+                        Pass Certificate • {selectedPhotoIndex + 1} of {total}
+                      </span>
+                    </div>
+                    <button
+                      onClick={() => setSelectedPhotoIndex(null)}
+                      className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition-colors cursor-pointer"
+                      aria-label="Close photo view"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+
+                  {/* Image Display */}
+                  <div className="relative aspect-square w-full bg-slate-900 rounded-xl overflow-hidden mt-2">
+                    <img
+                      src={STUDENT_PHOTOS[selectedPhotoIndex].url}
+                      alt={STUDENT_PHOTOS[selectedPhotoIndex].alt}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+
+                  {/* Caption & Navigation Controls */}
+                  <div className="flex items-center justify-between pt-3 px-2">
+                    <button
+                      onClick={() =>
+                        setSelectedPhotoIndex((prev) =>
+                          prev !== null && prev > 0 ? prev - 1 : total - 1
+                        )
+                      }
+                      className="px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-50 text-xs font-semibold text-slate-700 flex items-center gap-1 cursor-pointer"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                      <span>Prev</span>
+                    </button>
+
+                    <span className="text-xs font-medium text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200/60 flex items-center gap-1">
+                      <CheckCircle2 className="w-3.5 h-3.5" />
+                      <span>Code 8 Licensed Driver</span>
+                    </span>
+
+                    <button
+                      onClick={() =>
+                        setSelectedPhotoIndex((prev) =>
+                          prev !== null && prev < total - 1 ? prev + 1 : 0
+                        )
+                      }
+                      className="px-3 py-1.5 rounded-lg bg-[#D32F2F] hover:bg-[#b82525] text-white text-xs font-semibold flex items-center gap-1 cursor-pointer"
+                    >
+                      <span>Next</span>
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         )}
 
