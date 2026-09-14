@@ -9,13 +9,13 @@ interface PricingSectionProps {
 export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectPackage }) => {
   // Extract Code 8 packages
   const singleLesson = PRICING_PACKAGES.find((p) => p.id === 'rate-single' || p.id === 'rate-1hr')!;
-  const fiveLessons = PRICING_PACKAGES.find((p) => p.id === 'rate-5' || p.id === 'rate-5hr')!;
+  const sixLessons = PRICING_PACKAGES.find((p) => p.id === 'rate-6' || p.id === 'rate-5' || p.id === 'rate-6hr')!;
   const tenLessons = PRICING_PACKAGES.find((p) => p.id === 'rate-10' || p.id === 'rate-10hr')!;
   const twentyLessons = PRICING_PACKAGES.find((p) => p.id === 'rate-20' || p.id === 'rate-20hr')!;
   
   // Advance driving packages (to combine in one block)
   const advOneHour = PRICING_PACKAGES.find((p) => p.id === 'rate-adv-1')!;
-  const advTwentyFive = PRICING_PACKAGES.find((p) => p.id === 'rate-adv-25')!;
+  const advTwenty = PRICING_PACKAGES.find((p) => p.id === 'rate-adv-20' || p.id === 'rate-adv-25')!;
   
   // Test car hire
   const testCarHire = PRICING_PACKAGES.find((p) => p.id === 'rate-hire')!;
@@ -59,7 +59,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectPackage 
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {[singleLesson, fiveLessons, tenLessons, twentyLessons].filter(Boolean).map((pkg) => {
+            {[singleLesson, sixLessons, tenLessons, twentyLessons].filter(Boolean).map((pkg) => {
               const isPopular = pkg.id === 'rate-10' || pkg.id === 'rate-10hr';
               const isBestValue = pkg.id === 'rate-20' || pkg.id === 'rate-20hr';
 
@@ -162,13 +162,13 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectPackage 
                       </span>
                     </div>
                     <h4 className="text-base font-bold text-slate-900 mb-1">
-                      1 Hour (Training)
+                      1 Hour Lesson
                     </h4>
                     <p className="text-xs text-slate-600 mb-3">
                       Targeted session for defensive driving instincts, hazard awareness & steering control.
                     </p>
                     <div className="text-2xl font-black text-[#D32F2F] mb-4">
-                      R350
+                      {advOneHour?.price || 'R400'}
                     </div>
                   </div>
 
@@ -176,12 +176,12 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectPackage 
                     onClick={() => advOneHour && onSelectPackage(advOneHour)}
                     className="w-full bg-[#D32F2F] hover:bg-[#b82525] text-white text-xs font-bold uppercase py-2.5 px-3 rounded-lg shadow-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                   >
-                    <span>Select 1 Hr (R350)</span>
+                    <span>Select 1 Hr ({advOneHour?.price || 'R400'})</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
 
-                {/* Option 2: 25 Lessons (Full Training) */}
+                {/* Option 2: 20 Lessons (Full Course) */}
                 <div className="bg-gradient-to-br from-red-50 to-white rounded-xl p-5 border-2 border-red-300 flex flex-col justify-between relative shadow-xs">
                   <div>
                     <div className="flex items-center justify-between mb-2">
@@ -191,21 +191,21 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ onSelectPackage 
                       <span className="text-[10px] font-bold text-red-700">Best Advance Value</span>
                     </div>
                     <h4 className="text-base font-bold text-slate-900 mb-1">
-                      25 Lessons (Full Training)
+                      20 Lessons (Full Course)
                     </h4>
                     <p className="text-xs text-slate-600 mb-3">
-                      Complete comprehensive advanced driving course for mastery of all road conditions.
+                      Comprehensive 20-lesson advanced driving course for total road safety, complex highway navigation, and mastery.
                     </p>
                     <div className="text-2xl font-black text-slate-900 mb-4">
-                      R6,000
+                      {advTwenty?.price || 'R7,000'}
                     </div>
                   </div>
 
                   <button
-                    onClick={() => advTwentyFive && onSelectPackage(advTwentyFive)}
+                    onClick={() => advTwenty && onSelectPackage(advTwenty)}
                     className="w-full bg-slate-900 hover:bg-[#D32F2F] text-white text-xs font-bold uppercase py-2.5 px-3 rounded-lg shadow-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                   >
-                    <span>Select Full Course (R6,000)</span>
+                    <span>Select 20 Lessons ({advTwenty?.price || 'R7,000'})</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>

@@ -15,7 +15,7 @@ export const BookingSection: React.FC<BookingSectionProps> = ({ selectedPackageN
     fullName: '',
     phoneNumber: '',
     email: '',
-    service: '10 Lessons Package (R2,600)',
+    service: '10 Lessons (Includes Car Hire Test) (R3,500)',
     preferredDate: '',
     preferredTime: 'Morning (08:00 - 12:00)',
     transmission: 'Manual',
